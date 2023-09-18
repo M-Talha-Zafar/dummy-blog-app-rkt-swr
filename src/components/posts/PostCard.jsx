@@ -1,8 +1,9 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Paper, Typography } from "@mui/material";
 
 const PostCard = ({ post }) => {
   return (
-    <Box
+    <Paper
+      elevation={3}
       sx={{
         height: 300,
         width: 500,
@@ -12,11 +13,11 @@ const PostCard = ({ post }) => {
         m: 4,
       }}
     >
-      <Typography variant="h5">
+      <Typography variant="h5" mb={2}>
         {post.title.split(" ").slice(0, 5).join(" ")}
       </Typography>
       <Typography variant="subtitle1"> {post.body} </Typography>
-    </Box>
+    </Paper>
   );
 };
 
