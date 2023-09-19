@@ -1,21 +1,10 @@
 import { useSelector, useDispatch } from "react-redux";
 import { increment, decrement } from "../redux/reducers/counterSlice";
-import { Box, Button, CircularProgress, Typography } from "@mui/material";
-import useSWR from "swr";
-import axios from "axios";
-import { Suspense } from "react";
+import { Box, Button, Typography } from "@mui/material";
 
 const Counter = () => {
   const count = useSelector((state) => state.counter.value);
   const dispatch = useDispatch();
-
-  const { isLoading, error, data } = useSWR(
-    "https://jsonplaceholder.typicode.com/posts",
-    async (url) => {
-      const response = await axios.get(url);
-      return response.data;
-    }
-  );
 
   return (
     <Box>
@@ -33,11 +22,6 @@ const Counter = () => {
         <Typography variant="subtitle2">
           This counter component has been implemented using redux toolkit
         </Typography>
-        {/* <Typography variant="subtitle1">
-          <Suspense fallback={<CircularProgress />}>
-            `<Box>{data.length}</Box>`
-          </Suspense>
-        </Typography> */}
       </Box>
       <Box
         sx={{

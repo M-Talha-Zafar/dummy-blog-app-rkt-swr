@@ -1,9 +1,10 @@
 import Skeleton from "./Skeleton";
-import { Box } from "@mui/material";
+import { Paper } from "@mui/material";
 
 const SkeletonPost = () => {
   return (
-    <Box
+    <Paper
+      elevation={3}
       sx={{
         height: 300,
         width: 500,
@@ -17,7 +18,7 @@ const SkeletonPost = () => {
       <Skeleton classes="text width-100" />
       <Skeleton classes="text width-100" />
       <Skeleton classes="text width-100" />
-    </Box>
+    </Paper>
   );
 };
 export default SkeletonPost;

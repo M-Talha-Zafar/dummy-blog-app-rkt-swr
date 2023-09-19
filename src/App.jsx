@@ -10,6 +10,10 @@ import Layout from "./components/Layout";
 import Home from "./components/Home";
 import store from "./redux/store";
 import Counter from "./components/Counter";
+import { preload } from "swr";
+import { cacheKey, getPosts } from "./api/post-api";
+
+preload(cacheKey, getPosts);
 
 const App = () => {
   return (

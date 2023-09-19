@@ -1,22 +1,17 @@
 import { Box } from "@mui/material";
-import axios from "axios";
 import PostCard from "./PostCard";
 import useSWR from "swr";
+import { cacheKey, getPosts } from "../../api/post-api";
 
 const Feed = () => {
-  const fetchPosts = async () => {
-    const response = await axios.get(
-      "https://jsonplaceholder.typicode.com/posts?_limit=5"
-    );
-    return response.data;
-  };
-
-  const { data: posts } = useSWR("/api/feed", fetchPosts, { suspense: true });
+  const { data: posts } = useSWR(cacheKey, getPosts, {
+    suspense: true,
+  });
 
   return (
     <Box>
       {posts.map((post) => (
-        <PostCard post={post} key={post.id} />
+        <PostCard post={post} key={post._id} />
       ))}
     </Box>
   );
