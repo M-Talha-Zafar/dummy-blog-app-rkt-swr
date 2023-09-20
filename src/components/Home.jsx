@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import { Suspense } from "react";
-import SkeletonPost from "./skeletons/SkeletonPost";
+import SkeletonPostCards from "./skeletons/SkeletonPost";
 import { lazy } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import ErrorFallback from "./ErrorFallback";
@@ -29,11 +29,7 @@ const Home = () => {
         }}
       >
         <ErrorBoundary FallbackComponent={ErrorFallback}>
-          <Suspense
-            fallback={[...Array(5).keys()].map((p) => (
-              <SkeletonPost key={p} />
-            ))}
-          >
+          <Suspense fallback={<SkeletonPostCards count={10} />}>
             <Feed />
           </Suspense>
         </ErrorBoundary>

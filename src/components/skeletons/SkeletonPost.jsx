@@ -1,7 +1,6 @@
-import Skeleton from "./Skeleton";
-import { Paper } from "@mui/material";
+import { Box, Paper, Skeleton } from "@mui/material";
 
-const SkeletonPost = () => {
+const SkeletonPostCard = () => {
   return (
     <Paper
       elevation={3}
@@ -14,11 +13,22 @@ const SkeletonPost = () => {
         m: 4,
       }}
     >
-      <Skeleton classes="title width-50" />
-      <Skeleton classes="text width-100" />
-      <Skeleton classes="text width-100" />
-      <Skeleton classes="text width-100" />
+      <Skeleton height={40} sx={{ mb: 2 }} />
+      <Skeleton />
+      <Skeleton />
+      <Skeleton />
     </Paper>
   );
 };
-export default SkeletonPost;
+
+const SkeletonPostCards = ({ count }) => {
+  return (
+    <Box>
+      {[...Array(count).keys()].map((p) => (
+        <SkeletonPostCard key={p} />
+      ))}
+    </Box>
+  );
+};
+
+export default SkeletonPostCards;

@@ -1,6 +1,15 @@
 import { Paper, Typography } from "@mui/material";
 
 const PostCard = ({ post }) => {
+  const renderTitle = (title) => {
+    return (
+      <Typography variant="h5" mb={2}>
+        {title.split(" ").slice(0, 5).join(" ")}
+        {title.split(" ").length > 5 && "..."}
+      </Typography>
+    );
+  };
+
   return (
     <Paper
       elevation={3}
@@ -13,9 +22,7 @@ const PostCard = ({ post }) => {
         m: 4,
       }}
     >
-      <Typography variant="h5" mb={2}>
-        {post.title.split(" ").slice(0, 5).join(" ")}
-      </Typography>
+      {renderTitle(post.title)}
       <Typography variant="subtitle1"> {post.body} </Typography>
     </Paper>
   );

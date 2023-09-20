@@ -1,8 +1,8 @@
 export const createPostOptions = (newPost) => {
   return {
-    optimisticData: (posts) => [...posts, newPost],
+    optimisticData: (posts) => [newPost, ...posts],
     rollbackOnError: true,
-    populateCache: (added, posts) => [...posts, added],
+    populateCache: (added, posts) => [added, ...posts],
     revalidate: false,
   };
 };

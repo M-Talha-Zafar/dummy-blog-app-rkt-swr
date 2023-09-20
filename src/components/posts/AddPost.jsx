@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Box, Typography, TextField, Button } from "@mui/material";
 import { cacheKey, createPost } from "../../api/post-api";
 import useSWR from "swr";
-import { createPostOptions } from "../../api/post-mutation-option";
+import { createPostOptions } from "../../api/post-mutation-options";
 import { useSnackbar } from "../../contexts/SnackbarContext";
 
 const AddPost = () => {
@@ -35,27 +35,27 @@ const AddPost = () => {
   };
 
   const handleAddPost = async () => {
-    if (title.length > 0 && body.length > 0) {
+    if (title.trim().length > 0 && body.trim().length > 0) {
       setTitleError("");
       setBodyError("");
 
       const newPost = {
-        title,
-        body,
+        title: title.trim(),
+        body: body.trim(),
       };
 
       try {
         await mutate(createPost(newPost), createPostOptions(newPost));
+        showMessage("Post created successfully");
+        setTitle("");
+        setBody("");
       } catch (ex) {
         showMessage("Error creating post!", "error");
         console.error(ex);
       }
-
-      setTitle("");
-      setBody("");
     } else {
-      setTitleError(title.length === 0 ? "Title is required" : "");
-      setBodyError(body.length === 0 ? "Body is required" : "");
+      setTitleError(title.trim().length === 0 ? "Title is required" : "");
+      setBodyError(body.trim().length === 0 ? "Body is required" : "");
     }
   };
 

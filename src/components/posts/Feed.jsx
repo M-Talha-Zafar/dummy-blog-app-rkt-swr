@@ -4,9 +4,7 @@ import useSWR from "swr";
 import { cacheKey, getPosts } from "../../api/post-api";
 
 const Feed = () => {
-  const { data: posts } = useSWR(cacheKey, getPosts, {
-    suspense: true,
-  });
+  const { data: posts } = useSWR(cacheKey, getPosts, { suspense: true });
 
   return (
     <Box>

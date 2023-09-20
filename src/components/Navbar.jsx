@@ -16,8 +16,20 @@ const Navbar = () => {
   return (
     <AppBar position="static">
       <Toolbar sx={{ gap: 2 }}>
-        <NavItem variant="h6" component={Link} to="/">
-          Boilerplate
+        <NavItem
+          component={Link}
+          to="/"
+          style={{
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          <img
+            style={{ height: "50px", width: "50px", cursor: "pointer" }}
+            src="/ideogram.jpeg"
+            alt="logo"
+          />
+          <Typography variant="h6">Logify</Typography>
         </NavItem>
         <NavItem variant="subtitle1" component={Link} to="/counter">
           Counter
