@@ -1,9 +1,9 @@
-import { Paper, Typography } from "@mui/material";
+import { Avatar, Box, Paper, Typography } from "@mui/material";
 
 const PostCard = ({ post }) => {
   const renderTitle = (title) => {
     return (
-      <Typography variant="h5" mb={2}>
+      <Typography variant="h5" ml={2}>
         {title.split(" ").slice(0, 5).join(" ")}
         {title.split(" ").length > 5 && "..."}
       </Typography>
@@ -22,7 +22,10 @@ const PostCard = ({ post }) => {
         m: 4,
       }}
     >
-      {renderTitle(post.title)}
+      <Box display="flex" alignItems="center" mb={3}>
+        <Avatar src="/me.jpeg">T</Avatar>
+        {renderTitle(post.title)}
+      </Box>
       <Typography variant="subtitle1"> {post.body} </Typography>
     </Paper>
   );

@@ -1,4 +1,4 @@
-import { Box, Paper, Skeleton } from "@mui/material";
+import { Avatar, Box, Paper, Skeleton } from "@mui/material";
 
 const SkeletonPostCard = () => {
   return (
@@ -13,10 +13,13 @@ const SkeletonPostCard = () => {
         m: 4,
       }}
     >
-      <Skeleton height={40} sx={{ mb: 2 }} />
+      <Box display="flex" alignItems="center" mb={3}>
+        <Skeleton variant="circular" width={40} height={40} />
+        <Skeleton width={300} height={40} sx={{ ml: 2 }} />
+      </Box>
       <Skeleton />
       <Skeleton />
-      <Skeleton />
+      <Skeleton width={100} />
     </Paper>
   );
 };
